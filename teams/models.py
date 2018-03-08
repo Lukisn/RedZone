@@ -4,10 +4,10 @@ from django.db import models
 class Team(models.Model):
     team_name = models.CharField(max_length=50)
     home_city = models.CharField(max_length=50)
-    home_page = models.SlugField(max_length=100)
+    home_page = models.URLField(max_length=100)
 
     def __str__(self):
-        return f"{team_name}"
+        return f"{self.team_name}"
 
 
 class Player(models.Model):
