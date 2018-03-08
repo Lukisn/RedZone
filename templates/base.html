@@ -7,7 +7,7 @@
 <body>
     <div class="navigation">
         <nav>
-            <a href="/">Home</a>
+            <a href="{% url 'home' %}">Home</a>
             <a href="#">Matches</a>
             <a href="{% url 'teams' %}">Teams</a>
             <a href="{% url 'players' %}">Players</a>
@@ -20,5 +20,8 @@
         <p>Lorem ipsum ...</p>
         {% endblock content %}
     </div>
+    <footer>
+        <a href="{% url 'about' %}">About</a>
+    </footer>
 </body>
 </html>
