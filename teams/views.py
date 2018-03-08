@@ -3,8 +3,8 @@ from .models import Team, Player
 
 
 def teams(request):
-    teams_list = Team.objects.all()
-    return render(request, "teams/teams.html", {"teams_list": teams_list})
+    team_list = Team.objects.all()
+    return render(request, "teams/teams.html", {"team_list": team_list})
 
 
 def team(request, team_id):
@@ -13,8 +13,10 @@ def team(request, team_id):
 
 
 def players(request):
-    return render(request, "teams/players.html")
+    player_list = Player.objects.all()
+    return render(request, "teams/players.html", {"player_list": player_list})
 
 
 def player(request, player_id):
-    return render(request, "teams/player.html", {"player_id": player_id})
+    player_data = get_object_or_404(Player, id=player_id)
+    return render(request, "teams/player.html", {"player_data": player_data})

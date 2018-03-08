@@ -7,7 +7,9 @@ from . import views
 
 urlpatterns = [
     path("team", views.teams, name="teams"),
+    # path("team/", views.teams),  # ???
     path("team/<int:team_id>", views.team, name="team"),
     path("player", views.players, name="players"),
+    # path("player/", views.players, name="players"),  # ???
     path("player/<int:player_id>", views.player, name="player"),
 ]

@@ -10,7 +10,7 @@
             <th>City</th>
             <th>Home Page</th>
         </tr>
-    {% for team in teams_list %}
+    {% for team in team_list %}
         <tr>
             <td><a href="{% url 'team' team.id %}">{{ team.team_name }}</a></td>
             <td>{{ team.home_city }}</td>

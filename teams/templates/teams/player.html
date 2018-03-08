@@ -3,4 +3,11 @@
 {% block content %}
     <h1>Players Details Page</h1>
     <p>This page shows player details for player {{ player_id }}...</p>
+    <a href="{% url 'players' %}">All Players</a>
+
+    <h2>{{ player_data.full_name }}</h2>
+    <p>Team: <a href="{% url 'team' player_data.team.id %}">{{ player_data.team.team_name }}</a></p>
+    <p>Number: {{ player_data.number }}</p>
+    <p>Position: {{ player_data.position }}</p>
+
 {% endblock content %}
