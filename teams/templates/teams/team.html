@@ -3,4 +3,9 @@
 {% block content %}
     <h1>Team Details Page</h1>
     <p>This page shows team details for team {{ team_id }}...</p>
+    <a href="{% url 'teams' %}">All Teams</a>
+
+    <h2>{{ team_data.team_name }}</h2>
+    <a href="{{ team_data.home_page }}">Home Page</a>
+    <p>Description</p>
 {% endblock content %}
