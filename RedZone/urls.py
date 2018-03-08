@@ -18,6 +18,6 @@ from django.urls import path, include
 import teams.urls
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path("", include(teams.urls))
+    path('admin/', admin.site.urls, name="admin"),
+    path("", include(teams.urls), name="home")
 ]
