@@ -1,5 +1,13 @@
 {% extends "base.html" %}
 
+{% block navbar %}
+    <a class="navbar-item nav-link" href="#">News</a>
+    <a class="navbar-item nav-link" href="#">Leagues</a>
+    <a class="navbar-item nav-link" href="#">Games</a>
+    <a class="navbar-item nav-link active" href="{% url 'teams' %}">Teams</a>
+    <a class="navbar-item nav-link" href="{% url 'players' %}">Players</a>
+{% endblock navbar %}
+
 {% block content %}
     <h1>Team Details Page</h1>
     <p>This page shows team details for team {{ team_id }}...</p>
@@ -11,21 +19,25 @@
 
     <h2>Current Roster</h2>
     {% if current_members %}
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Position</th>
-            <th>Number</th>
-            <th>Date joined</th>
-        </tr>
-        {% for membership in current_members %}
-        <tr>
-            <td><a href="{% url 'player' membership.player.id %}">{{ membership.player.full_name }}</a></td>
-            <td>{{ membership.position }}</td>
-            <td>{{ membership.number }}</td>
-            <td>{{ membership.date_joined }}</td>
-        </tr>
-        {% endfor %}
+    <table class="table table-sm table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Number</th>
+                <th>Date joined</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for membership in current_members %}
+            <tr>
+                <td><a href="{% url 'player' membership.player.id %}">{{ membership.player.full_name }}</a></td>
+                <td>{{ membership.position }}</td>
+                <td>{{ membership.number }}</td>
+                <td>{{ membership.date_joined }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
     </table>
     {% else %}
     <p>No current players.</p>
@@ -33,21 +45,25 @@
 
     <h2>Previous Players</h2>
     {% if previous_members %}
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Position</th>
-            <th>Number</th>
-            <th>Date released</th>
-        </tr>
-        {% for membership in previous_members %}
-        <tr>
-            <td><a href="{% url 'player' membership.player.id %}">{{ membership.player.full_name }}</a></td>
-            <td>{{ membership.position }}</td>
-            <td>{{ membership.number }}</td>
-            <td>{{ membership.date_left }}</td>
-        </tr>
-        {% endfor %}
+    <table  class="table table-sm table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Number</th>
+                <th>Date released</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for membership in previous_members %}
+            <tr>
+                <td><a href="{% url 'player' membership.player.id %}">{{ membership.player.full_name }}</a></td>
+                <td>{{ membership.position }}</td>
+                <td>{{ membership.number }}</td>
+                <td>{{ membership.date_left }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
     </table>
     {% else %}
     <p>No previous players.</p>

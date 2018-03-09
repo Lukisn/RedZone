@@ -7,26 +7,42 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
-<body>
-    <header>
-        <nav>
-            <a href="{% url 'home' %}">RedZone</a>
-            <a href="#">News</a>
-            <a href="#">Leagues</a>
-            <a href="#">Games</a>
-            <a href="{% url 'teams' %}">Teams</a>
-            <a href="{% url 'players' %}">Players</a>
-            <a href="{% url 'admin:index' %}">Admin</a>
-        </nav>
-    </header>
-    <main>
+<body class="container">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{% url 'home' %}">RedZone</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                {% block navbar %}
+                <a class="navbar-item nav-link" href="#">News</a>
+                <a class="navbar-item nav-link" href="#">Leagues</a>
+                <a class="navbar-item nav-link" href="#">Games</a>
+                <a class="navbar-item nav-link" href="{% url 'teams' %}">Teams</a>
+                <a class="navbar-item nav-link" href="{% url 'players' %}">Players</a>
+                {% endblock navbar %}
+            </div>
+        </div>
+        <!-- <span class="navbar-text">Logged in as ...</span> -->
+        <form class="form-inline">
+            <a href="#">
+                <button class="btn btn-sm btn-outline-success" type="button">Login</button>
+            </a>
+            <!-- <button class="btn btn-sm btn-outline-danger" type="button">Logout</button> -->
+        </form>
+    </nav>
+    <main class="container">
         {% block content %}
         <h1>Content</h1>
         <p>This is the main content area ...</p>
         {% endblock content %}
     </main>
-    <footer>
-        <a href="{% url 'about' %}">About</a>
+    <footer class="footer text-muted">
+        <div class="container">
+            <p class="float-right"><a href="{% url 'admin:index' %}">Admin</a></p>
+            <p><a href="{% url 'about' %}">About</a></p>
+        </div>
     </footer>
     <!-- Bootstrap JS scripts -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

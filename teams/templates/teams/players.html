@@ -1,20 +1,32 @@
 {% extends "base.html" %}
 
+{% block navbar %}
+    <a class="navbar-item nav-link" href="#">News</a>
+    <a class="navbar-item nav-link" href="#">Leagues</a>
+    <a class="navbar-item nav-link" href="#">Games</a>
+    <a class="navbar-item nav-link" href="{% url 'teams' %}">Teams</a>
+    <a class="navbar-item nav-link active" href="{% url 'players' %}">Players</a>
+{% endblock navbar %}
+
 {% block content %}
     <h1>Players Overview Page</h1>
     <p>This page lists the teams...</p>
-    <table>
-        <tr>
-            <th>Player Name</th>
-            <th>Home Country</th>
-            <th>Home City</th>
-        </tr>
-    {% for player in player_list %}
-        <tr>
-            <td><a href="{% url 'player' player.id %}">{{ player.full_name }}</a></td>
-            <td>{{ player.home_country }}</td>
-            <td>{{ player.home_city }}</td>
-        </tr>
-    {% endfor %}
+    <table class="table table-sm table-hover">
+        <thead>
+            <tr>
+                <th>Player Name</th>
+                <th>Home Country</th>
+                <th>Home City</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for player in player_list %}
+            <tr>
+                <td><a href="{% url 'player' player.id %}">{{ player.full_name }}</a></td>
+                <td>{{ player.home_country }}</td>
+                <td>{{ player.home_city }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
     </table>
 {% endblock content %}
