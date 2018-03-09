@@ -13,11 +13,9 @@ def team(request, team_id):
     now = timezone.now()
     current_members = team_data.membership_set\
         .filter(date_joined__lte=now)\
-        .exclude(date_released__lte=now)\
-        .order_by("number")
+        .exclude(date_released__lte=now)
     previous_members = team_data.membership_set\
-        .filter(date_released__lte=now)\
-        .order_by("date_released")
+        .filter(date_released__lte=now)
     return render(request, "teams/team.html", {
         "team_data": team_data,
         "current_members": current_members,
@@ -37,8 +35,7 @@ def player(request, player_id):
         .filter(date_joined__lte=now)\
         .exclude(date_released__lte=now)
     previous_teams = player_data.membership_set\
-        .filter(date_released__lte=now)\
-        .order_by("date_released")
+        .filter(date_released__lte=now)
     return render(request, "teams/player.html", {
         "player_data": player_data,
         "current_teams": current_teams,

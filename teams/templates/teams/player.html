@@ -9,6 +9,7 @@
     <p>from {{ player_data.home_city }}, {{ player_data.home_country }}</p>
 
     <h2>Current Team</h2>
+    {% if current_teams %}
     <table>
         <tr>
             <th>Team name</th>
@@ -25,9 +26,12 @@
         </tr>
         {% endfor %}
     </table>
-
+    {% else %}
+    <p>No current team.</p>
+    {% endif %}
 
     <h2>Previous Teams</h2>
+    {% if previous_teams %}
     <table>
         <tr>
             <th>Team name</th>
@@ -46,4 +50,7 @@
         </tr>
         {% endfor %}
     </table>
+    {% else %}
+        <p>No previous teams.</p>
+    {% endif %}
 {% endblock content %}

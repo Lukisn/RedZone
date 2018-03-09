@@ -3,9 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <title>{% block title %}RedZone{% endblock %}</title>
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
@@ -13,7 +11,9 @@
     <header>
         <nav>
             <a href="{% url 'home' %}">RedZone</a>
-            <a href="#">Matches</a>
+            <a href="#">News</a>
+            <a href="#">Leagues</a>
+            <a href="#">Games</a>
             <a href="{% url 'teams' %}">Teams</a>
             <a href="{% url 'players' %}">Players</a>
             <a href="{% url 'admin:index' %}">Admin</a>
@@ -22,7 +22,7 @@
     <main>
         {% block content %}
         <h1>Content</h1>
-        <p>Lorem ipsum ...</p>
+        <p>This is the main content area ...</p>
         {% endblock content %}
     </main>
     <footer>
