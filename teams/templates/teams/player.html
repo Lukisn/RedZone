@@ -6,8 +6,44 @@
     <a href="{% url 'players' %}">All Players</a>
 
     <h2>{{ player_data.full_name }}</h2>
-    <p>Team: <a href="{% url 'team' player_data.team.id %}">{{ player_data.team.team_name }}</a></p>
-    <p>Number: {{ player_data.number }}</p>
-    <p>Position: {{ player_data.position }}</p>
+    <p>from {{ player_data.home_city }}, {{ player_data.home_country }}</p>
 
+    <h2>Current Team</h2>
+    <table>
+        <tr>
+            <th>Team name</th>
+            <th>Position</th>
+            <th>Number</th>
+            <th>Date joined</th>
+        </tr>
+        {% for membership in current_teams %}
+        <tr>
+            <td><a href="{% url 'team' membership.team.id %}">{{ membership.team.team_name }}</a></td>
+            <td>{{ membership.position }}</td>
+            <td>{{ membership.number }}</td>
+            <td>{{ membership.date_joined }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+
+    <h2>Previous Teams</h2>
+    <table>
+        <tr>
+            <th>Team name</th>
+            <th>Position</th>
+            <th>Number</th>
+            <th>Date joined</th>
+            <th>Date released</th>
+        </tr>
+        {% for membership in previous_teams %}
+        <tr>
+            <td><a href="{% url 'team' membership.team.id %}">{{ membership.team.team_name }}</a></td>
+            <td>{{ membership.position }}</td>
+            <td>{{ membership.number }}</td>
+            <td>{{ membership.date_joined }}</td>
+            <td>{{ membership.date_released }}</td>
+        </tr>
+        {% endfor %}
+    </table>
 {% endblock content %}
